@@ -1,4 +1,5 @@
-import functions, art, data
+import art, data
+
 
 def receiveOrder():
     # returns a string (a customer order, an admin command or None)
@@ -13,6 +14,7 @@ def receiveOrder():
     except ValueError:
         return orderNo.lower()
 
+
 def getResources(order):
     waterNeeded = data.menu[order]["ingredients"]["water"]
     coffeeNeeded = data.menu[order]["ingredients"]["coffee"]
@@ -20,6 +22,7 @@ def getResources(order):
         milkNeeded = data.menu[order]["ingredients"]["milk"]
     else: milkNeeded = 0
     return waterNeeded, coffeeNeeded, milkNeeded
+
 
 def resourceIsSufficient(order):
     water, coffee, milk = getResources(order)
@@ -30,6 +33,7 @@ def resourceIsSufficient(order):
     elif stock["coffeeAvailable"] < coffee:
         return "coffee"
     else: return "milk"
+
 
 def receiveMoney(order):
     total = 0
@@ -44,6 +48,7 @@ def receiveMoney(order):
             total += nickels * 0.05
     return total
 
+
 def processMoney(order):
     total = receiveMoney(order)
     price = data.menu[order]['cost']
@@ -53,11 +58,13 @@ def processMoney(order):
     else:
         return True, balance, total
 
+
 def generateReport():
     print(f"Water: {stock["waterAvailable"]}ml")
     print(f"Coffee: {stock["coffeeAvailable"]}g")
     print(f"Milk: {stock["milkAvailable"]}ml")
     print(f"Money: ${till:.2f}")
+
 
 machineIsOn = True
 
@@ -102,7 +109,6 @@ while machineIsOn:
                     if balance > 0:
                         print(f"Here is your balance of ${balance:.2f}\n {art.coins}")
                         input("Press any key to continue")
-
 
                     # addToTill
                     till += price      # if funds are sufficient, add coins to till
