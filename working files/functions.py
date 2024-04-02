@@ -1,6 +1,7 @@
 import data, art
 
-options = {1:"espresso", 2:"latte", 3: "cappuccino"}
+options = {1: "espresso", 2: "latte", 3: "cappuccino"}
+
 
 def receiveOrder():
     orderNo = input("Type the number corresponding to your order: ")
@@ -31,6 +32,7 @@ def receiveMoney(order):
     else:
         return
 
+
 def processMoney(total, order):
     price = data.menu[order]['cost']
     balance = total - price
@@ -45,7 +47,6 @@ def checkResources(order):
     coffeeNeeded = data.menu[order]["ingredients"]["coffee"]
     if "milk" in data.menu[order]["ingredients"]:
         milkNeeded = data.menu[order]["ingredients"]["milk"]
-    else: milkNeeded = 0
+    else:
+        milkNeeded = 0
     return waterNeeded, coffeeNeeded, milkNeeded
-
-

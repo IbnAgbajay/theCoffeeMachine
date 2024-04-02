@@ -6,6 +6,7 @@ milkAvailable = data.resources["milk"]
 
 till = 0
 
+
 def resourceIsSufficient(order):
     water, coffee, milk = functions.checkResources(order)
     if waterAvailable >= water and coffeeAvailable >= coffee and milkAvailable >= milk:
@@ -14,13 +15,16 @@ def resourceIsSufficient(order):
         return "water"
     elif coffeeAvailable < coffee:
         return "coffee"
-    else: return "milk"
+    else:
+        return "milk"
+
 
 def generateReport():
     print(f"Water: {waterAvailable}ml")
     print(f"Coffee: {coffeeAvailable}g")
     print(f"Milk: {milkAvailable}ml")
     print(f"Money: ${till:.2f}")
+
 
 machineIsOn = True
 while machineIsOn:
@@ -67,7 +71,7 @@ while machineIsOn:
                 else:
                     # return money
                     orderIsValid = False
-                    print(f"Your money (${money:.2f})  is insufficent for the order. Here is your refund!")
+                    print(f"Your money (${money:.2f})  is insufficient for the order. Here is your refund!")
 
             else:
                 # giveFeedback
